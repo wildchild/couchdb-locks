@@ -1,0 +1,24 @@
+SUBDIRS = src
+
+.PHONY: $(SUBDIRS)
+.PHONY: install clean distclean
+
+all: $(SUBDIRS)
+
+install:
+	$(MAKE) -C src install
+
+clean:
+	find . -name "*~" -exec rm -f {} \;
+	$(MAKE) -C src clean
+
+distclean: clean
+	rm -f config.status
+	rm -f config.log
+	rm -f configure
+	rm -f Makefile
+	rm -rf autom4te.cache
+	$(MAKE) -C src distclean
+
+$(SUBDIRS):
+	$(MAKE) -C $@

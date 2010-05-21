@@ -1,0 +1,9 @@
+Gemfile.lock
+*.beam
+autom4te.cache
+configure
+config.log
+config.status
+Makefile
+.bundle
+vendor/*

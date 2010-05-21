@@ -1,0 +1,23 @@
+SOURCES = $(wildcard *.erl)
+BEAMS = $(addprefix $(OUTDIR)/, $(SOURCES:.erl=.beam))
+COUCHDBDIR = @prefix@/lib/couchdb/erlang/lib/couch-@couchdbver@
+
+BEAMDIR = $(COUCHDBDIR)/ebin
+INCLUDEDIR = $(COUCHDBDIR)/include
+
+.PHONY: install clean distclean
+
+all: $(BEAMS)
+
+install:
+	install -d $(BEAMDIR)
+	install -m 644 *.beam $(BEAMDIR)
+
+$(OUTDIR)/%.beam: %.erl
+	@ERLC@ -I $(INCLUDEDIR) $<
+
+clean:
+	rm -f *.beam
+
+distclean:
+	rm -f Makefile
