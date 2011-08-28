@@ -6,7 +6,7 @@ Bundler.require
 DB_NAME = "locks_test"
 DB_HOST = "http://localhost:5984"
 
-Rspec.configure do |config|
+RSpec.configure do |config|
   config.before(:all) do
     @db_url = "#{DB_HOST}/#{DB_NAME}"
     @couchdb = RestClient::Resource.new(DB_HOST)
