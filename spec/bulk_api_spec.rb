@@ -9,7 +9,7 @@ describe "Bulk Document API request" do
 
   context "with POST verb" do
     it "should create new documents" do
-      response = @resource["_locks/_db/_bulk_docs?lock=#{@lock}"].post(@docs.to_json)
+      response = @resource["_locks/_db/_bulk_docs?lock=#{@lock}"].post(@docs.to_json, { "Content-Type" => "application/json" })
       json = JSON.parse(response)
       json.size.should == 2
     end

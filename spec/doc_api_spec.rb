@@ -9,7 +9,7 @@ describe "Document API request" do
 
   context "with POST verb" do
     it "should create new document" do
-      response = @resource["_locks/_db?lock=#{@lock}"].post(@doc.to_json)
+      response = @resource["_locks/_db?lock=#{@lock}"].post(@doc.to_json, { "Content-Type" => "application/json" })
       JSON.parse(response)["ok"].should be_true
     end
 
@@ -39,7 +39,7 @@ describe "Document API request" do
 
   context "with DELETE verb" do
     before(:each) do
-      response = @resource.post(@doc.to_json)
+      response = @resource.post(@doc.to_json, { "Content-Type" => "application/json" })
       @json = JSON.parse(response)
     end
 
