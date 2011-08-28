@@ -33,7 +33,7 @@ Assuming that your couch is on http://localhost:5984. Otherwise change it in spe
 Install ruby and rubygems, then execute:
 
     gem install bundler
-    bundle install vendor
+    bundle install --path vendor
     bundle exec rspec spec/
 
 You'll see green lines.
